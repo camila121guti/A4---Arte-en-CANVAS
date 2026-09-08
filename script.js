@@ -1,97 +1,111 @@
-// Obtener el lienzo Canvas
-const canvas = document.getElementById('mainCanvas');
-const ctx = canvas.getContext('2d');
+// ==========================================
+// 1. CARITA FELIZ GEOMÉTRICA (Solo rectángulos/cuadrados)
+// ==========================================
+const faceCanvas = document.getElementById('happyFaceCanvas');
+const fCtx = faceCanvas.getContext('2d');
+
+function drawHappyFace() {
+    fCtx.clearRect(0, 0, faceCanvas.width, faceCanvas.height);
+
+    // Fondo del canvas
+    fCtx.fillStyle = '#08090c';
+    fCtx.fillRect(0, 0, faceCanvas.width, faceCanvas.height);
+
+    // Marco base / Cara (Amarillo brillante)
+    fCtx.fillStyle = '#ffcc00';
+    fCtx.fillRect(75, 75, 350, 350);
+
+    // Sombra/Borde inferior de la cara
+    fCtx.fillStyle = '#d4a000';
+    fCtx.fillRect(75, 405, 350, 20);
+
+    // Ojo Izquierdo (Cuadrado con pupila)
+    fCtx.fillStyle = '#0d0e12';
+    fCtx.fillRect(140, 150, 70, 90);
+    fCtx.fillStyle = '#00f0ff'; // Detalle pupila neón
+    fCtx.fillRect(170, 170, 30, 30);
+
+    // Ojo Derecho (Cuadrado con pupila)
+    fCtx.fillStyle = '#0d0e12';
+    fCtx.fillRect(290, 150, 70, 90);
+    fCtx.fillStyle = '#00f0ff'; // Detalle pupila neón
+    fCtx.fillRect(300, 170, 30, 30);
+
+    // Nariz (Rectángulo vertical)
+    fCtx.fillStyle = '#e6b800';
+    fCtx.fillRect(235, 250, 30, 45);
+
+    // Sonrisa Geométrica (Construida exclusivamente con bloques rectangulares)
+    fCtx.fillStyle = '#0d0e12';
+    // Lado izquierdo de la sonrisa
+    fCtx.fillRect(140, 310, 40, 30);
+    // Centro de la sonrisa
+    fCtx.fillRect(180, 330, 140, 40);
+    // Lado derecho de la sonrisa
+    fCtx.fillRect(320, 310, 40, 30);
+
+    // Lengua o detalle de la sonrisa (Rosa neón)
+    fCtx.fillStyle = '#ff007f';
+    fCtx.fillRect(220, 345, 60, 20);
+}
+
+// ==========================================
+// 2. ANIMACIÓN GEOMÉTRICA SYNTH (Ecualizador dinámico)
+// ==========================================
+const animCanvas = document.getElementById('animationCanvas');
+const aCtx = animCanvas.getContext('2d');
 
 let time = 0;
 
-// Definición de rectángulos y cuadros para la composición artística
-const geometricArt = [
-    // Fondo de grillas rectangulares estructuradas
-    { x: 40, y: 40, w: 140, h: 140, color: '#d4af37', speed: 0.02, offset: 0 },
-    { x: 200, y: 70, w: 90, h: 220, color: '#1a1a1a', stroke: '#d4af37', speed: 0.015, offset: 1 },
-    { x: 310, y: 40, w: 180, h: 100, color: '#262626', speed: 0.03, offset: 2 },
-    { x: 510, y: 90, w: 240, h: 150, color: '#141414', stroke: '#ffffff', speed: 0.01, offset: 1.5 },
-    
-    // Bloques centrales de acento
-    { x: 90, y: 210, w: 200, h: 190, color: 'rgba(212, 175, 55, 0.25)', stroke: '#d4af37', speed: 0.025, offset: 0.5 },
-    { x: 310, y: 160, w: 180, h: 240, color: '#d4af37', speed: 0.02, offset: 2.5 },
-    { x: 510, y: 260, w: 140, h: 140, color: '#ffffff', speed: 0.035, offset: 3 },
-    
-    // Líneas rectangulares decorativas en la base
-    { x: 40, y: 420, w: 710, h: 12, color: '#d4af37', speed: 0.01, offset: 0 },
-    { x: 40, y: 440, w: 710, h: 4, color: '#ffffff', speed: 0.01, offset: 0.5 }
-];
+// Configuración de barras animadas
+const barsCount = 14;
+const barWidth = 32;
+const gap = 12;
+const startX = 20;
 
-// Función principal de dibujo y animación
-function renderCanvas() {
-    // 1. Limpiar el lienzo en cada frame
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function drawSynthAnimation() {
+    aCtx.clearRect(0, 0, animCanvas.width, animCanvas.height);
 
-    // 2. Fondo del arte
-    ctx.fillStyle = '#080808';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Fondo oscuro con rejilla sutil
+    aCtx.fillStyle = '#08090c';
+    aCtx.fillRect(0, 0, animCanvas.width, animCanvas.height);
 
-    // 3. Renderizar cada figura rectangular con animación de movimiento sinusoidal
-    geometricArt.forEach((rect) => {
-        ctx.save();
+    // Línea de suelo neón
+    aCtx.fillStyle = '#7000ff';
+    aCtx.fillRect(0, 350, animCanvas.width, 4);
+
+    // Dibujar barras ecualizadoras de altura dinámica
+    for (let i = 0; i < barsCount; i++) {
+        const x = startX + i * (barWidth + gap);
         
-        // Movimiento flotante en el eje Y
-        const offsetY = Math.sin(time * rect.speed + rect.offset) * 12;
-        const currentY = rect.y + offsetY;
+        // Calcular altura oscilatoria usando ondas seno y coseno
+        const height = Math.sin(time * 0.05 + i * 0.4) * 110 + Math.cos(time * 0.03 + i * 0.2) * 50 + 140;
+        const y = 350 - height;
 
-        // Relleno
-        if (rect.color) {
-            ctx.fillStyle = rect.color;
-            ctx.fillRect(rect.x, currentY, rect.w, rect.h);
-        }
+        // Gradiente simulado por capas de rectángulos
+        aCtx.fillStyle = i % 2 === 0 ? '#00f0ff' : '#ff007f';
+        aCtx.fillRect(x, y, barWidth, height);
 
-        // Contorno
-        if (rect.stroke) {
-            ctx.strokeStyle = rect.stroke;
-            ctx.lineWidth = 2;
-            ctx.strokeRect(rect.x, currentY, rect.w, rect.h);
-        }
-
-        ctx.restore();
-    });
-
-    // 4. Animación de partículas de cuadros pequeños en movimiento continuo
-    for (let i = 0; i < 10; i++) {
-        const posX = (time * 60 + i * 85) % canvas.width;
-        const posY = 35 + (i * 42);
-        
-        ctx.fillStyle = 'rgba(212, 175, 55, 0.7)';
-        ctx.fillRect(posX, posY, 10, 10); // Cuadrados pequeñitos flotantes
+        // Bloque flotante por encima de cada barra
+        const floatY = y - 25 - Math.sin(time * 0.08 + i) * 15;
+        aCtx.fillStyle = '#ffffff';
+        aCtx.fillRect(x, floatY, barWidth, 10);
     }
 
-    // Incrementar el tiempo para la animación
-    time += 0.04;
+    // Cuadrados de fondo flotantes en velocidad continua
+    for (let j = 0; j < 8; j++) {
+        const cloudX = (time * 40 + j * 90) % animCanvas.width;
+        const cloudY = 30 + (j * 25);
+        aCtx.fillStyle = 'rgba(112, 0, 255, 0.4)';
+        aCtx.fillRect(cloudX, cloudY, 16, 16);
+    }
 
-    // Bucle de animación
-    requestAnimationFrame(renderCanvas);
+    time += 1;
+    requestAnimationFrame(drawSynthAnimation);
 }
 
-// Resaltar opción activa del menú al hacer scroll
+// Iniciar ambos Canvas cuando la página cargue
 document.addEventListener('DOMContentLoaded', () => {
-    renderCanvas();
-
-    const sections = document.querySelectorAll('section[id], main[id]');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
+    drawHappyFace();
+    drawSynthAnimation();
 });
