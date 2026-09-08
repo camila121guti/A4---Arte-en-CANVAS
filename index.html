@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad A4 | Arte en Canvas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Menú Principal -->
+    <header class="header">
+        <div class="logo">
+            <span>A4 | CANVAS ART</span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#canvas-section">Actividad A4 Arte en Canvas</a></li>
+                <li><a href="#detalles">Detalles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero / Portada -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>ACTIVIDAD A4: ARTE EN CANVAS</h1>
+            <p>Composición de arte abstracto geométrico y animación interactiva en HTML5 Canvas.</p>
+            <a href="#canvas-section" class="btn-primary">Ver Arte en Vivo</a>
+        </div>
+    </section>
+
+    <!-- Sección Principal: El Canvas Animado -->
+    <main id="canvas-section" class="container">
+        <div class="section-title">
+            <h2>Arte Geométrico Animado</h2>
+            <p>Dibujo elaborado exclusivamente con <strong>cuadros y rectángulos</strong> utilizando programación en JavaScript.</p>
+        </div>
+
+        <div class="canvas-card">
+            <!-- Lienzo de Canvas HTML5 -->
+            <canvas id="mainCanvas" width="800" height="500"></canvas>
+            
+            <div class="canvas-controls">
+                <span class="status-tag">● Animación Activa</span>
+                <p>Las formas geométricas reaccionan con movimiento oscilatorio continuo y partículas rectangulares flotantes.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sección de Información sobre la Actividad -->
+    <section id="detalles" class="info-section">
+        <div class="info-container">
+            <div class="info-card">
+                <h3>1. Composición Geométrica</h3>
+                <p>Uso estricto de rectángulos y cuadros con coordenadas dinámicas, bordes iluminados y transparencias.</p>
+            </div>
+            <div class="info-card">
+                <h3>2. Animación en Tiempo Real</h3>
+                <p>Implementación de <code>requestAnimationFrame</code> con funciones de onda para simular fluidez y movimiento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2026 Publicado en GitHub Pages — Actividad A4 Arte en Canvas.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
