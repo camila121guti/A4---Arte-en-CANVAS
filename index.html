@@ -3,72 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad A4 | Arte en Canvas</title>
+    <title>A4 | Arte en Canvas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Menú Principal -->
     <header class="header">
         <div class="logo">
-            <span>A4 | CANVAS ART</span>
+            <span>CANVAS // A4</span>
         </div>
         <nav class="nav-menu">
             <ul>
-                <li><a href="#inicio" class="active">Inicio</a></li>
-                <li><a href="#canvas-section">Actividad A4 Arte en Canvas</a></li>
-                <li><a href="#detalles">Detalles</a></li>
+                <li><a href="#carita-section">01. Carita Feliz</a></li>
+                <li><a href="#animacion-section">02. Animación Synth</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero / Portada -->
-    <section id="inicio" class="hero">
+    <!-- Hero / Encabezado principal -->
+    <section class="hero">
         <div class="hero-content">
             <h1>ACTIVIDAD A4: ARTE EN CANVAS</h1>
-            <p>Composición de arte abstracto geométrico y animación interactiva en HTML5 Canvas.</p>
-            <a href="#canvas-section" class="btn-primary">Ver Arte en Vivo</a>
+            <p>Exploración de formas geométricas y movimiento interactivo.</p>
         </div>
     </section>
 
-    <!-- Sección Principal: El Canvas Animado -->
-    <main id="canvas-section" class="container">
-        <div class="section-title">
-            <h2>Arte Geométrico Animado</h2>
-            <p>Dibujo elaborado exclusivamente con <strong>cuadros y rectángulos</strong> utilizando programación en JavaScript.</p>
-        </div>
+    <!-- Contenedor Principal de Trabajos -->
+    <main class="main-layout">
 
-        <div class="canvas-card">
-            <!-- Lienzo de Canvas HTML5 -->
-            <canvas id="mainCanvas" width="800" height="500"></canvas>
-            
-            <div class="canvas-controls">
-                <span class="status-tag">● Animación Activa</span>
-                <p>Las formas geométricas reaccionan con movimiento oscilatorio continuo y partículas rectangulares flotantes.</p>
+        <!-- PARTE 1: Carita Feliz (Cuadros y Rectángulos) -->
+        <section id="carita-section" class="canvas-block">
+            <div class="block-header">
+                <h2>01 / Carita Feliz Geométrica</h2>
             </div>
-        </div>
+            <div class="canvas-wrapper">
+                <canvas id="happyFaceCanvas" width="500" height="500"></canvas>
+            </div>
+        </section>
+
+        <!-- PARTE 2: Animación Dinámica Original -->
+        <section id="animacion-section" class="canvas-block">
+            <div class="block-header">
+                <h2>02 / Animación Geométrica Synth</h2>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="animationCanvas" width="650" height="400"></canvas>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Sección de Información sobre la Actividad -->
-    <section id="detalles" class="info-section">
-        <div class="info-container">
-            <div class="info-card">
-                <h3>1. Composición Geométrica</h3>
-                <p>Uso estricto de rectángulos y cuadros con coordenadas dinámicas, bordes iluminados y transparencias.</p>
-            </div>
-            <div class="info-card">
-                <h3>2. Animación en Tiempo Real</h3>
-                <p>Implementación de <code>requestAnimationFrame</code> con funciones de onda para simular fluidez y movimiento.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pie de Página -->
     <footer>
-        <p>&copy; 2026 Publicado en GitHub Pages — Actividad A4 Arte en Canvas.</p>
+        <p>&copy; 2026 — Actividad A4 Arte en Canvas</p>
     </footer>
 
     <script src="script.js"></script>
